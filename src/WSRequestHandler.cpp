@@ -110,6 +110,7 @@ const QHash<QString, RpcMethodHandler> WSRequestHandler::messageMap{
 	{ "GetCurrentScene", &WSRequestHandler::GetCurrentScene },
 	{ "GetSceneList", &WSRequestHandler::GetSceneList },
 	{ "CreateScene", &WSRequestHandler::CreateScene },
+	{ "RemoveScene", &WSRequestHandler::RemoveScene },
 	{ "ReorderSceneItems", &WSRequestHandler::ReorderSceneItems },
 	{ "SetSceneTransitionOverride", &WSRequestHandler::SetSceneTransitionOverride },
 	{ "RemoveSceneTransitionOverride", &WSRequestHandler::RemoveSceneTransitionOverride },

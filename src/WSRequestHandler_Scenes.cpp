@@ -105,6 +105,26 @@ RpcResponse WSRequestHandler::CreateScene(const RpcRequest& request) {
 	return request.success();
 }
 
+
+RpcResponse WSRequestHandler::RemoveScene(const RpcRequest& request) {
+	if (!request.hasField("sceneName")) {
+		return request.failed("missing request parameters");
+	}
+
+	const char* sceneName = obs_data_get_string(request.parameters(), "sceneName");
+    OBSSourceAutoRelease source = obs_get_source_by_name(sceneName);
+
+    if (!source) {
+    	return request.failed("no scene with this name found");
+    }
+
+    if (obs_source_get_type(source) != OBS_SOURCE_TYPE_SCENE)
+    	return request.failed("the specified source is not a scene")
+
+    obs_source_remove(source);
+    return request.success();
+}
+
 /**
 * Changes the order of scene items in the requested scene.
 *
