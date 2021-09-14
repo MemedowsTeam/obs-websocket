@@ -119,7 +119,7 @@ RpcResponse WSRequestHandler::RemoveScene(const RpcRequest& request) {
     }
 
     if (obs_source_get_type(source) != OBS_SOURCE_TYPE_SCENE)
-    	return request.failed("the specified source is not a scene")
+    	return request.failed("the specified source is not a scene");
 
     obs_source_remove(source);
     return request.success();
